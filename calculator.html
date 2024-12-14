@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="calculator.css">
+        <title>Calculator</title>
+
+        <body>
+            <div class="container">
+                <div class="textbox" id="display">0</div>
+                <div class="container2">
+                    <button onclick="clearDisplay()" style="background: #313030;">C</button>
+                    <button onclick="calculate()" style="background: #313030;">=</button>
+                    <button onclick="press('0')">0</button>
+                    <button onclick="press('+')" style="background: rgb(242, 171, 6); font-size: 28px;">+</button>
+                    <button onclick="press('1')" >1</button>
+                    <button onclick="press('2')">2</button>
+                   
+                    <button onclick="press('3')">3</button>
+                    <button onclick="press('-')" style="background: rgb(242, 171, 6); font-size: 28px;">-</button>
+                    <button onclick="press('4')">4</button>
+                    <button onclick="press('5')">5</button>
+                    
+                    <button onclick="press('6')">6</button>
+                    <button onclick="press('*')" style="background: rgb(242, 171, 6); font-size: 28px;">*</button>
+                    <button onclick="press('7')">7</button>
+                    <button onclick="press('8')">8</button>
+                    
+                    <button onclick="press('9')">9</button>
+                    <button onclick="press('/')" style="background: rgb(242, 171, 6); font-size: 28px;">/</button>
+                    
+                </div>
+            </div>
+            <script>
+                let currentInput = "";
+
+                function press(key) {
+                    const display = document.getElementById("display");
+                    if (currentInput == "0" & key !== ".") {
+                        curretInput = key;
+                    } else {
+                        currentInput += key;
+                    }
+
+                    display.textContent = currentInput;
+                }
+
+                function clearDisplay() {
+                    currentInput = "";
+                    document.getElementById("display").textContent = "0";
+                }
+
+                function calculate() {
+                    try {
+                        const result = eval(currentInput);
+                        currentInput = result.toString();
+                        document.getElementById("display").textContent = result;
+                    } catch (error) {
+                        document.getElementById("display").textContent = "0";
+                        currentInput = "";
+                    }
+                }
+            </script>
+        </body>
+    </head>
+</html>
